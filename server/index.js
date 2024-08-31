@@ -4,9 +4,10 @@ const app = express();
 const pool = require('./config/db');
 const mockProduct = require('./mockData/mockProducts');
 
-app.get('/products',(req,res)=>{
+app.get('/products', async (req,res)=>{
   try{
-    res.status(200).json(mockProduct);
+    const result = await pool.query('SELECT * FROM products');
+    res.json(result.rows);
   }catch(err){
     res.status(500).send('Database Error')
   }
