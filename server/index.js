@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 
 const pool = require('./config/db');
-const mockProduct = require('./mockData/mockProducts');
 
 app.get('/products', async (req,res)=>{
   try{
